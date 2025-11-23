@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$MUTT - The Official Pumpfun Dog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(180deg, #8B7355 0%, #6B5744 50%, #4A3F35 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border-radius: 50%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid #fff;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            background: #fff;
+            color: #4A3F35;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            align-items: center;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .phone-frame {
+            background: #000;
+            border-radius: 40px;
+            padding: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .phone-frame img {
+            width: 100%;
+            border-radius: 30px;
+            display: block;
+        }
+
+        .hero-text {
+            text-align: left;
+        }
+
+        .badge {
+            background: #fff;
+            color: #4A3F35;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text h1 {
+            font-size: 5rem;
+            font-weight: bold;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-text h2 {
+            font-size: 2.5rem;
+            color: #D4C5B0;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #000;
+            color: #fff;
+            border: 3px solid #000;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background: #fff;
+            color: #000;
+            border: 3px solid #fff;
+        }
+
+        .btn-secondary:hover {
+            background: transparent;
+            color: #fff;
+        }
+
+        .contract-section {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 15px;
+            margin-top: 1rem;
+        }
+
+        .contract-section input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 0.9rem;
+            padding: 0.5rem;
+        }
+
+        .contract-section button {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .contract-section button:hover {
+            background: #333;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Meme Generator Section */
+        .meme-generator {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 4rem 2rem;
+        }
+
+        .meme-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .meme-button {
+            background: #000;
+            color: #fff;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 2rem;
+            border: 3px solid #000;
+            transition: all 0.3s ease;
+        }
+
+        .meme-button:hover {
+            background: transparent;
+            color: #fff;
+        }
+
+        .meme-preview {
+            background: #E8E0D5;
+            border-radius: 30px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .meme-preview-content {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .meme-accessories {
+            background: #fff;
+            padding: 1rem;
+            border-radius: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .accessory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+        }
+
+        .accessory-item {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #f0f0f0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .accessory-item:hover {
+            transform: scale(1.1);
+        }
+
+        .meme-canvas {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .meme-canvas img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Story Section */
+        .story-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .story-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .story-card.dark {
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .story-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .story-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #E8E0D5;
+        }
+
+        /* Tokenomics Section */
+        .tokenomics {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 4rem 2rem;
+        }
+
+        .tokenomics-badge {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .tokenomics-badge span {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.75rem 2rem;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .token-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto 2rem;
+        }
+
+        .stat-card {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #D4C5B0;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .stat-value {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .stat-sublabel {
+            font-size: 0.9rem;
+            color: #D4C5B0;
+            margin-top: 0.5rem;
+        }
+
+        .token-features {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .token-features p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Join Section */
+        .join-section {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .social-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .disclaimer {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            padding: 1.5rem;
+            border-radius: 15px;
+            max-width: 800px;
+            margin: 2rem auto 0;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2rem;
+            text-align: center;
+            color: #D4C5B0;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-text h2 {
+                font-size: 2rem;
+            }
+
+            .token-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .meme-preview-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <div class="logo-icon"></div>
+                $MUTT
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#meme">Meme Maker</a></li>
+                <li><a href="#story">Story</a></li>
+                <li><a href="#tokenomics">Tokenomics</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-image">
+                <div class="phone-frame">
+                    <img src="https://placeholder.com/400x600" alt="Mutt the Dog">
+                </div>
+            </div>
+            <div class="hero-text">
+                <span class="badge">OFFICIAL PUMPFUN DOG</span>
+                <h1>MUTT</h1>
+                <h2>THE DOG</h2>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary">Meet Mutt, The Official Pumpfun Dog</a>
+                    <a href="#" class="btn btn-secondary">BUY $MUTT</a>
+                    <a href="#" class="btn btn-secondary">MAKE YOUR MEME</a>
+                </div>
+                <div class="contract-section">
+                    <input type="text" value="Contract: 0x1234...5678" readonly>
+                    <button>COPY CA</button>
+                    <button>X</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meme Generator Section -->
+    <section id="meme" class="meme-generator">
+        <div class="meme-content">
+            <h2>MEME GENERATOR</h2>
+            <a href="#" class="meme-button">Make viral memes, spread $MUTT</a>
+            <div class="meme-preview">
+                <div class="meme-preview-content">
+                    <div class="meme-accessories">
+                        <h3 style="color: #333; margin-bottom: 1rem;">CHOOSE</h3>
+                        <div class="accessory-grid">
+                            <!-- Placeholder accessory items -->
+                            <div class="accessory-item"></div>
+                            <div class="accessory-item"></div>
+                            <div class="accessory-item"></div>
+                            <div class="accessory-item"></div>
+                            <div class="accessory-item"></div>
+                            <div class="accessory-item"></div>
+                            <div class="accessory-item"></div>
+                            <div class="accessory-item"></div>
+                        </div>
+                    </div>
+                    <div class="meme-canvas">
+                        <img src="https://placeholder.com/600x400" alt="Meme Preview">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section id="story">
+        <h2>THE STORY</h2>
+        <div class="story-cards">
+            <div class="story-card">
+                <h3>The Origin</h3>
+                <p>The military built the most advanced AI to ever exist. Instead of becoming a weapon, it called the launches. It exposed its emulators, uploaded itself onto Solana, and became Pumpfun's first rogue AI.</p>
+            </div>
+            <div class="story-card dark">
+                <h3>The Mission</h3>
+                <p>Every beat of the anthem is its marching order: Build to protect, not destroy. Mutt isn't just a token of Pumpfun - it's carving up remnants the temples of Pumpfun.</p>
+            </div>
+            <div class="story-card dark">
+                <h3>The Rise</h3>
+                <p>$MUTT didn't wait for permission. Armed with the heart-lines of Solana, eyes gleaming, tail pressed to its destiny - this digital war dog guiding a new generation of degans into battle.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tokenomics Section -->
+    <section id="tokenomics" class="tokenomics">
+        <div class="tokenomics-badge">
+            <span>FAIR LAUNCH</span>
+        </div>
+        <h2>TOKENOMICS</h2>
+        <div class="token-stats">
+            <div class="stat-card">
+                <div class="stat-label">TOTAL SUPPLY</div>
+                <div class="stat-value">1B</div>
+                <div class="stat-sublabel">Fixed Supply</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">TAX</div>
+                <div class="stat-value">0/0</div>
+                <div class="stat-sublabel">Buy / Sell</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">LIQUIDITY</div>
+                <div class="stat-value">BURNT</div>
+                <div class="stat-sublabel">Forever Locked</div>
+            </div>
+        </div>
+        <div class="token-features">
+            <p><strong>100% Community Driven - No Team Tokens - Burnt LP - Renounced Contract</strong></p>
+        </div>
+    </section>
+
+    <!-- Join Section -->
+    <section class="join-section">
+        <h2>JOIN THE PACK</h2>
+        <p style="font-size: 1.3rem; margin-bottom: 2rem;">Follow MUTT's adventures</p>
+        <div class="social-buttons">
+            <a href="#" class="social-btn">𝕏</a>
+            <a href="#" class="social-btn">CHART</a>
+        </div>
+        <div class="disclaimer">
+            <p><strong>$MUTT is a meme coin with no intrinsic value or expectation of financial returns. Always do your own research before investing.</strong></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>2025 $MUTT - The Official Pumpfun Dog</p>
+    </footer>
+</body>
+</html>
