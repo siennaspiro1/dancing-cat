@@ -78,7 +78,7 @@
         .logo-icon {
             width: 40px;
             height: 40px;
-            background: url('/mnt/user-data/uploads/59f6b437-37e5-4970-829a-970e958888b4.png');
+            background: url('https://cdn.prod.website-files.com/6922ebff015a9b454ccf6cf7/6922f34c33f5e2ba6f16fb87_59f6b437-37e5-4970-829a-970e958888b4.png');
             background-size: cover;
             background-position: center;
             border-radius: 50%;
@@ -876,15 +876,15 @@
                         
                         <div class="cat-images">
                             <div class="cat-image-container active" onclick="selectCat(1)">
-                                <img src="/mnt/user-data/uploads/8c4af6ec-ad90-4189-b38f-10068b4c27f7.png" alt="Felix Cat 1">
+                                <img src="https://cdn.prod.website-files.com/6922ebff015a9b454ccf6cf7/6922f341d698ece6b76a3a31_8c4af6ec-ad90-4189-b38f-10068b4c27f7.png" alt="Felix Cat 1">
                             </div>
                             <div class="cat-image-container" onclick="selectCat(2)">
-                                <img src="/mnt/user-data/uploads/91687829-28de-4ed7-9bea-54ddc2e18bc2.png" alt="Felix Cat 2">
+                                <img src="https://cdn.prod.website-files.com/6922ebff015a9b454ccf6cf7/6922f356e6aa19f1c885dd6b_91687829-28de-4ed7-9bea-54ddc2e18bc2.png" alt="Felix Cat 2">
                             </div>
                         </div>
                         
                         <div class="meme-canvas" id="memeCanvas">
-                            <img src="/mnt/user-data/uploads/8c4af6ec-ad90-4189-b38f-10068b4c27f7.png" alt="Selected Cat" id="selectedCat">
+                            <img src="https://cdn.prod.website-files.com/6922ebff015a9b454ccf6cf7/6922f341d698ece6b76a3a31_8c4af6ec-ad90-4189-b38f-10068b4c27f7.png" alt="Selected Cat" id="selectedCat">
                         </div>
                         
                         <div class="layer-controls" id="layerControls" style="display: none;">
@@ -938,9 +938,9 @@
             // Update the main canvas image
             const selectedCatImg = document.getElementById('selectedCat');
             if (catNumber === 1) {
-                selectedCatImg.src = '/mnt/user-data/uploads/8c4af6ec-ad90-4189-b38f-10068b4c27f7.png';
+                selectedCatImg.src = 'https://cdn.prod.website-files.com/6922ebff015a9b454ccf6cf7/6922f341d698ece6b76a3a31_8c4af6ec-ad90-4189-b38f-10068b4c27f7.png';
             } else {
-                selectedCatImg.src = '/mnt/user-data/uploads/91687829-28de-4ed7-9bea-54ddc2e18bc2.png';
+                selectedCatImg.src = 'https://cdn.prod.website-files.com/6922ebff015a9b454ccf6cf7/6922f356e6aa19f1c885dd6b_91687829-28de-4ed7-9bea-54ddc2e18bc2.png';
             }
         }
         
